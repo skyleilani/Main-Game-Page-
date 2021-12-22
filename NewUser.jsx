@@ -29,7 +29,7 @@ class NewUser extends React.Component {
     console.log(this.props.username);
     event.preventDefault();
     if (this.props.usernames.includes(this.state.username)) {
-      alert("duplicate username");
+      alert("Username not available, please try a new one");
     } else {
       this.addUser(event);
     }
@@ -62,6 +62,7 @@ class NewUser extends React.Component {
             onChange={this.handleUsernameChange}
           />
           <button
+            id="button"
             disabled={username === "" || firstname === "" || lastname === ""}
           >
             Create New User
