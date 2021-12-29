@@ -1,94 +1,103 @@
+import React, { useState } from "react";
+import randomColor from "randomcolor";
+import copy from "clipboard-copy";
+import "./styles.css";
+
 let val1 = Math.floor(Math.random() * 100);
 let val2 = Math.floor(Math.random() * 100);
 let val3 = Math.floor(Math.random() * 100);
 
-class App extends Component {
-  state = {
-    numQuestions: 0,
-    numCorrect: 0,
+const App = (props) => {
+  const [numQuestions, setNumQuestions] = useState(0);
+  const [numCorrect, setNumCorrect] = useState(0);
 
-    value1: val1,
-    value2: val2,
-    value3: val3,
-    proposedAnswer: Math.floor(Math.random() * 3) + val1 + val2 + val3,
-    correctAnswer: val1 + val2 + val3
+  // backgroundColor:
+
+  const [value1, setValue1] = useState(val1);
+  const [value2, setValue2] = useState(val2);
+  const [value3, setValue3] = useState(val3);
+  const [proposedAnswer, setProposedAnswer] = useState(
+    Math.floor(Math.random() * 3) + val1 + val2 + val3
+  );
+  const [correctAnswer, setCorrectAnswer] = useState(val1 + val2 + val3);
+
+  {
+    /*//randomize background color set
+   const changeBackground = (e) => {
+    let color = randomColor();
+    this.setState({
+      bgColor: color
+    });
+  }; 
+
+  backgroundHandler = (e) => {
+    copy(this.state.bgColor);
   };
+*/
+  }
 
-  randomEquation = () => {
+  const randomEquation = () => {
     let ranValue1 = Math.floor(Math.random() * 100);
     let ranValue2 = Math.floor(Math.random() * 100);
     let ranValue3 = Math.floor(Math.random() * 100);
 
-    console.log(this.correctAnswer);
-
-    this.setState({
-      value1: ranValue1,
-      value2: ranValue2,
-      value3: ranValue3,
-
-      proposedAnswer:
-        Math.floor(Math.random() * 3) + ranValue1 + ranValue2 + ranValue3,
-
-      correctAnswer: ranValue1 + ranValue2 + ranValue3,
-
-      numQuestions: this.state.numQuestions + 1
-    });
+    setValue1(ranValue1);
+    setValue2(ranValue2);
+    setValue3(ranValue3);
+    setProposedAnswer(
+      Math.floor(Math.random() * 3) + ranValue1 + ranValue2 + ranValue3
+    );
+    setCorrectAnswer(ranValue1 + ranValue2 + ranValue3);
+    setNumQuestions(numQuestions + 1);
   };
 
-  trueButton = () => {
-    if (this.state.correctAnswer === this.state.proposedAnswer) {
-      this.setState({
-        numCorrect: this.state.numCorrect + 1
-      });
+  const trueButton = () => {
+    if (correctAnswer === proposedAnswer) {
+      setNumCorrect(numCorrect + 1);
     }
   };
 
-  falseButton = () => {
-    if (this.state.correctAnswer !== this.state.proposedAnswer) {
-      this.setState({
-        numCorrect: this.state.numCorrect + 1
-      });
+  const falseButton = () => {
+    if (correctAnswer !== proposedAnswer) {
+      setNumCorrect(numCorrect + 1);
     }
   };
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">ReactND - Coding Practice</h1>
-        </header>
-        <div className="game">
-          <h2>Mental Math</h2>
-
-          <div className="equation">
-            <p className="text">
-              {this.state.value1} + {this.state.value2} + {this.state.value3} ={" "}
-              {this.state.proposedAnswer}
-            </p>
-          </div>
-          <button
-            onClick={() => {
-              this.randomEquation();
-              this.trueButton();
-            }}
-          >
-            True
-          </button>
-          <button
-            onClick={() => {
-              this.randomEquation();
-              this.falseButton();
-            }}
-          >
-            False
-          </button>
+  return (
+    <div className="App">
+      <header className="App-header"></header>
+      <div className="game">
+        <div className="equation">
           <p className="text">
-            Your Score: {this.state.numCorrect}/{this.state.numQuestions}
+            {value1} + {value2} + {value3} = {proposedAnswer}
           </p>
         </div>
+        <button
+          id="true"
+          onClick={() => {
+            randomEquation();
+            trueButton();
+            // backgroundHandler();
+          }}
+          // style={{ backgroundColor: this.state.bgColor }}
+        >
+          True
+        </button>
+        <button
+          id="false"
+          onClick={() => {
+            randomEquation();
+            falseButton();
+          }}
+        >
+          False
+        </button>
+        <p className="text">
+          Your Score: {numCorrect}/{numQuestions}
+        </p>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default App;
