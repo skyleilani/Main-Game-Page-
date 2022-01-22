@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './styles.css';
+import '../styles.css';
 
 const val1 = Math.floor(Math.random() * 100),
   val2 = Math.floor(Math.random() * 100),
