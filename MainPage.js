@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import ListUsernames from './components/ListUsernames';
-import NewUser from './components/NewUser';
-import ToggleGamesPlayed from './components/ToggleGamesPlayed';
-import './styles.css';
+import ListUsernames from '../components/ListUsernames';
+import { Link } from 'react-router-dom';
+import NewUser from '../components/NewUser';
+import ToggleGamesPlayed from '../components/ToggleGamesPlayed';
+import '../styles.css';
 
 const MainPage = () => {
   const [usernames, setUsernames] = useState([]),
@@ -25,6 +26,9 @@ const MainPage = () => {
         isToggleOn={isToggleOn}
         toggleDisplay={toggleDisplay}
       />
+      <Link to='/EquationGame'>
+        <button type='button'> Play the Equation Game</button>
+      </Link>
 
       <div id='username-list'>
         <ListUsernames
