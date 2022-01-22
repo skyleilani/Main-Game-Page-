@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import ListUsernames from './components/ListUsernames';
 import NewUser from './components/NewUser';
 import ToggleGamesPlayed from './components/ToggleGamesPlayed';
