@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './styles.css';
 
 const val1 = Math.floor(Math.random() * 100),
@@ -8,7 +9,7 @@ const val1 = Math.floor(Math.random() * 100),
 const ifCorrectColors = ['#76A113', '#90C418', '#A5E01B', '#B0F01D', '#92C718'],
   ifFalseColors = ['#A11F08', '#C4260A', '#E02B0B', '#F02E0C', '#C7270A'];
 
-const App = () => {
+const EquationGame = () => {
   const [backgroundColor, setBackgroundColor] = useState(''),
     [numQuestions, setNumQuestions] = useState(0),
     [numCorrect, setNumCorrect] = useState(0);
@@ -60,7 +61,7 @@ const App = () => {
     <div className='Main'>
       <div className='App'>
         <header className='App-header'></header>
-        <div className='game' style={{backgroundColor: backgroundColor}}>
+        <div className='game' style={{ backgroundColor: backgroundColor }}>
           <div className='equation'>
             <p className='text'>
               {value1} + {value2} + {value3} = {proposedAnswer}
@@ -71,7 +72,8 @@ const App = () => {
             onClick={() => {
               randomEquation();
               trueButton();
-            }}>
+            }}
+          >
             True
           </button>
           <button
@@ -79,16 +81,20 @@ const App = () => {
             onClick={() => {
               randomEquation();
               falseButton();
-            }}>
+            }}
+          >
             False
           </button>
           <p className='text'>
             Your Score: {numCorrect}/{numQuestions}
           </p>
+          <Link to='/'>
+            <button type='button'>Back to Leadership Board</button>
+          </Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default App;
+export default EquationGame;
