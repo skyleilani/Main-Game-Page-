@@ -22,3 +22,46 @@
 #button {
   margin: 5px;
 }
+
+.game {
+  background-color: #c4c4c4;
+  border: 0mm solid rgb(82, 82, 82);
+  box-shadow: 6.3px 10.6px 10.6px hsl(0deg 0% 0% / 0.34);
+  --shadow-color: hsl(220deg 60% 50%);
+
+  border-radius: 8px;
+}
+
+#true {
+  background-color: #b1db7b;
+  box-shadow: 6.3px 5.6px 8.6px hsl(0deg 0% 0% / 0.35);
+  margin: 5px;
+  border-radius: 6px;
+}
+
+#true:hover,
+#true:active,
+#true:focus {
+  border-radius: 6px;
+  box-shadow: 6.3px 5.6px 8.6px hsl(0deg 0% 0% / 0.35);
+  border-color: #78759c;
+  outline: none !important;
+  box-shadow: none;
+  background-color: #7dff56;
+}
+
+#false {
+  border-radius: 6px;
+  background-color: #b83a3a;
+  box-shadow: 6.3px 5.6px 8.6px hsl(0deg 0% 0% / 0.35);
+}
+
+#false:hover,
+#false:active,
+#false:focus {
+  border-radius: 6px;
+  border-color: #9c4343;
+  outline: none !important;
+  box-shadow: none;
+  background-color: #f26968;
+}
