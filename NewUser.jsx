@@ -1,80 +1,75 @@
-import React from "react";
-import PropTypes from "prop-types";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-class NewUser extends React.Component {
-  state = {
-    firstname: "",
-    lastname: "",
-    username: ""
+const NewUser = ({ onAddUser, usernames, propUsername }) => {
+  const [firstname, setFirstname] = useState(''),
+    [lastname, setLastname] = useState(''),
+    [username, setUsername] = useState('');
+
+  const handleUsernameChange = e => {
+    setUsername(e.target.value);
   };
 
-  handleUsernameChange = (event) => {
-    this.setState({ username: event.target.value });
+  const handleFirstnameChange = e => {
+    setFirstname(e.target.value);
   };
 
-  handleFirstnameChange = (event) => {
-    this.setState({ firstname: event.target.value });
+  const handleLastnameChange = e => {
+    setLastname(e.target.value);
   };
 
-  handleLastnameChange = (event) => {
-    this.setState({ lastname: event.target.value });
+  const addUser = e => {
+    e.preventDefault();
+    onAddUser(username);
   };
 
-  addUser = (event) => {
-    event.preventDefault();
-    this.props.onAddUser(this.state.username);
-  };
-
-  isDuplicateUsername = (event) => {
-    console.log(this.props.username);
-    event.preventDefault();
-    if (this.props.usernames.includes(this.state.username)) {
-      alert("Username not available, please try a new one");
+  const isDuplicateUsername = e => {
+    console.log(propUsername);
+    e.preventDefault();
+    if (usernames.includes(username)) {
+      alert('Username not available, please try a new one');
     } else {
-      this.addUser(event);
+      addUser(e);
     }
   };
 
-  render() {
-    const { username, firstname, lastname } = this.state;
-    return (
-      <div>
-        <form onSubmit={this.isDuplicateUsername}>
-          <input
-            id="fistname"
-            type="text"
-            placeholder="First name"
-            value={firstname}
-            onChange={this.handleFirstnameChange}
-          />
-          <input
-            id="lastname"
-            type="text"
-            placeholder="Last name"
-            value={lastname}
-            onChange={this.handleLastnameChange}
-          />
-          <input
-            id="username"
-            type="text"
-            placeholder="username"
-            value={username}
-            onChange={this.handleUsernameChange}
-          />
-          <button
-            id="button"
-            disabled={username === "" || firstname === "" || lastname === ""}
-          >
-            Create New User
-          </button>
-        </form>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <form onSubmit={isDuplicateUsername}>
+        <input
+          id='fistname'
+          type='text'
+          placeholder='First name'
+          value={firstname}
+          onChange={handleFirstnameChange}
+        />
+        <input
+          id='lastname'
+          type='text'
+          placeholder='Last name'
+          value={lastname}
+          onChange={handleLastnameChange}
+        />
+        <input
+          id='username'
+          type='text'
+          placeholder='username'
+          value={username}
+          onChange={handleUsernameChange}
+        />
+        <button
+          id='button'
+          disabled={username === '' || firstname === '' || lastname === ''}
+        >
+          Create New User
+        </button>
+      </form>
+    </div>
+  );
+};
 
 NewUser.propTypes = {
-  onAddUser: PropTypes.func.isRequired
+  onAddUser: PropTypes.func.isRequired,
 };
 
 export default NewUser;
