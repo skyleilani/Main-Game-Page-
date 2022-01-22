@@ -3,7 +3,7 @@ import Username from './Username';
 import PropTypes from 'prop-types';
 
 // Display all created users in divs
-const ListUsernames = ({isToggleOn, gamesPlayed, usernames}) => {
+const ListUsernames = ({ isToggleOn, gamesPlayed, usernames }) => {
   return (
     <div>
       <ul className='user'>
