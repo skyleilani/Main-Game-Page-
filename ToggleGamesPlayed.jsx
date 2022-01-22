@@ -1,9 +1,7 @@
-import React from "react";
-
-const ToggleGamesPlayed = (props) => {
+const ToggleGamesPlayed = ({isToggleOn, toggleDisplay}) => {
   return (
-    <button onClick={props.toggleDisplay}>
-      {props.isToggleOn
+    <button onClick={toggleDisplay}>
+      {isToggleOn
         ? "Click to hide # of games played"
         : "Click to show # of games played"}
     </button>
