@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import EquationGame from './EquationGame';
-import MainPage from './MainPage';
+import EquationGame from './pages/EquationGame';
+import MainPage from './pages/MainPage';
 
 const App = () => {
   return (
