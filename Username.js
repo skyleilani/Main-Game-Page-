@@ -1,14 +1,13 @@
-import React from "react";
 import PropTypes from "prop-types";
 
 // provides list content to UserList (Individual Users)
-const Username = (props) => {
-  return props.isToggleOn ? (
+const Username = ({ isToggleOn, username, gamesPlayed }) => {
+  return isToggleOn ? (
     <li>
-      {props.username} has played {props.gamesPlayed} games{" "}
+      {username} has played {gamesPlayed} games
     </li>
   ) : (
-    <li>{props.username}</li>
+    <li>{username}</li>
   );
 };
 
