@@ -10,4 +10,3 @@ https://jhbng.csb.app/
 - Connect this to firebase so that registration can happen, play a game and then their score will show up next to other users 
 - Also put Snake game in here so they can choose one of two games and in the leaderboard itll say something like 'Filter Game' 
 
-https://codesandbox.io/s/equationgame-o41qk
